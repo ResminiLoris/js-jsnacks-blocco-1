@@ -5,9 +5,22 @@ var palla = {
     peso : 10,
 }
 
-var content = '';
-for(var key in palla){
-    content += '<div><strong>' + key + ': </strong>' + palla[key] + '</div>';
+
+
+function printObject(obj, targetElement){
+    var content = '';
+    for(var key in obj){
+    content += '<div><strong>' + key + ': </strong>' + obj[key] + '</div>';
 }
 
-display.innerHTML = content;
+targetElement.innerHTML = content;
+}
+
+var userPeso = prompt('inserisci il nuovo peso', '0');
+while(!userPeso || isNaN(userPeso) || userPeso.trim() === ''){
+    userPeso = prompt('inserisci il nuovo peso', '0');
+}
+
+palla.peso = parseInt(userPeso);
+
+printObject(palla,display);
